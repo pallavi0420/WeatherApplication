@@ -55,10 +55,10 @@ fun Weatherrapp() {
     var weatherData by remember { mutableStateOf<Weather?>(null) }
     var isLoading by remember { mutableStateOf(false) }
 
-    // 1. LaunchedEffect with Coroutines for loading and updating
+    
     LaunchedEffect(r) {
         isLoading = true
-        // Simulate network delay
+        
         delay(2000)
         weatherData = Weather(
             temperature = "${(20..30).random()}°C",
@@ -68,7 +68,6 @@ fun Weatherrapp() {
         isLoading = false
     }
 
-    // 2. SideEffect for actions after recomposition
     SideEffect {
         Log.d("WeatherApp", "UI recomposed for city: $r")
     }
